@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NavBar1</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        html{
+            font-size: 1rem;
+        }
+        header{
+            position: fixed;
+            width: 100%;
+            background: rgb(32, 187, 244);
+            padding: 3rem 5rem;
+        }
+        nav{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        nav a{
+            font-size: 1.5rem;
+            text-decoration: none;
+        }
+        nav ul{
+            list-style: none;
+            gap: 2rem;
+            display: flex;
+            color: #fff;
+        }
+        nav a#logo{
+            color: #000000;
+            font-weight: 700;
+            text-decoration: none;
+        }
+        nav ul a{
+            font-weight:600;
+        }
+        nav ul a:hover{
+            border-bottom:2px solid #ffffff;
+        }
+        section#home{
+            height: 100vh;
+            display: grid;
+            place-items:center;
+        }
+        #hom-menu{
+            display: none;
+        }
+        nav ul.active{
+            left: 0;
+        }
+        @media only screen and (max-width:991px){
+            html{
+                font-size: 56.25%;
+            }
+            header{
+                padding:2.2rem 5rem ;
+            }
+        }
+        @media only screen and (max-width:767px){
+            html{
+                font-size: 50%;
+            }
+            #hom-menu{
+                display: block;
+                color: #fff;
+                
+            }
+            nav a#logo,#hom-menu{
+                font-size: 3rem;
+            }
+    
+            nav ul{
+                background-color: black;
+                position: fixed;
+                top: 62.4px;
+                left: -100vw;
+                color: #fff;
+                width: 100vw;
+                height: calc(100vh - 62.4px);
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: space-around;
+                font-size: large;
+                transition: 1s;
+                gap: 0;
+            }
+        }
+        @media only screen and  (max-width : 575px){
+            html{
+                font-size:46.87%;
+            }
+            header{
+                padding: 2rem 3rem;
+            }
+
+        }
+       
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="#homelogo" id="logo">Site logo</a>
+            <i class="fa-solid fa-bars" id="hom-menu"></i>
+            <ul id="nav-bar">
+                <li><a href="#home"></a>Home</li> 
+                <li><a href="#services"></a>Services</li>
+                <li><a href="#team"></a>Team</li>
+                <li><a href="#about"></a>About</li>
+                <li><a href="#contact"></a>Contact</li>
+            </ul>
+        </nav>
+    </header>
+    <section id="home">
+        <h1>Home Section</h1>
+    </section>
+    <!-- script -->
+     <script>
+        let homMenuIcon = document.getElementById("hom-menu");
+        let navBar = document.getElementById("nav-bar");
+        let navLinks =navBar.querySelectorAll("li");
+
+        homMenuIcon.addEventListener("click", () => {
+        navBar.classList.toggle("active");
+        homMenuIcon.classList.toggle("fa-times");   
+        });
+        navLinks.forEach((navLinks) => {
+            navLinks.addEventListener("click", () => {
+                navBar.classList.remove("active");
+                homMenuIcon.classList.toggle("fa-times");
+            });
+        })
+     </script> 
+</body>
+</html>
